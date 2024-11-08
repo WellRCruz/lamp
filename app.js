@@ -3,37 +3,41 @@
  * @author Wellington R. Cruz
  */
 
-// Variáveis de apoio lógica
+// variáveis de apoio  lógica
+let chave = false // o interruptor inicia desligado
+let lampada = true // a lâmpada está OK
 
-let chave = false // O interruptor inicia desligado.
-let lampada = true // A lâmpada está ok.
+// Pré carregamento do arquivo de áudio
+let som = new Audio("sound/breaking-glass.mp3")
 
 function quebrar() {
-   if (lampada === true)
-   document.getElementById('lamp').src="img/broken.jpg"
-    // reproduzindo um arquivo de áudio no JS
-    // Passo 1: Copiar o arquivo áudio para o projeto
-    // Passo 2: Usar a classe Áudio(biblioteca interna do JS)
-    let som = new Audio ()
-    som.src = "sound/glassbreaking.wav"
-    som.play()
-
-    // Apoio a lógica para o JS identificar a lâmpada quebrada
-    lampada = false
-    
+    if (lampada === true) {
+        document.getElementById('lamp').src = "img/broken.jpg"
+        // reproduzindo um arquivo de áudio no JS
+        // Passo 1: copiar o arquivo de áudio para o projeto
+        // Passo 2: Usar a classe Audio(biblioteca interna do JS)
+        // Passo 3: pré carregar o arquivo de áudio para sincronizar com a troca de imagem (Experência do Usuário)
+        som.play()
+        // apoo a lógica para o JS identificar a lâmpada quebrada
+        lampada = false
+    }
 }
 
-function onoff () {
-      if (chave === false && lampada === true) { // Se chave estiver desligada, LIGAR A CHAVE.
-      document.getElementById('interruptor').src="img/swon.png"
-      chave = true // O JS agora sabe que a chave está ligada. 
-      // Acender a lâmpada
-      document.getElementById('lamp').src="img/on.jpg"
-   } else if (lampada === true) {
-      document.getElementById('interruptor').src="img/swoff.png"
-      chave = false
-      // Desligar a lâmpada
-      document.getElementById('lamp').src="img/off.jpg"
-   }
-
+function onoff() {
+    if (chave === false) {
+        // ligar a chave
+        document.getElementById('interruptor').src = "img/swon.png"
+        chave = true //O JS agora sabe que a chave está ligada
+        // verificar se a lâmpada está intacta antes de acender
+        if (lampada === true) {
+            document.getElementById('lamp').src = "img/on.jpg"
+        }
+    } else {
+        document.getElementById('interruptor').src = "img/swoff.png"
+        chave = false
+        // verificar se a lâmpada está intacta antes de apagar
+        if (lampada === true) {
+            document.getElementById('lamp').src = "img/off.jpg"
+        }
+    }
 }
