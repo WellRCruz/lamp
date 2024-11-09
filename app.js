@@ -3,10 +3,6 @@
  * @author Wellington R. Cruz
  */
 
-/**
- * Simples simulador de uma lâmpada
- * @author Luiz Fernando
-*/
 // variavei de apoio logico
 let chave = false // o interruptor inicia desligado
 let lampada = true // a lâmpada está OK
