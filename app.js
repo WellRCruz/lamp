@@ -3,10 +3,10 @@
  * @author Wellington R. Cruz
  */
 
-// variavei de apoio logico
+// variaveis de apoio logico
 let chave = false // o interruptor inicia desligado
 let lampada = true // a lâmpada está OK
-// Pré carregamento do arquivo de áudi
+// Pré carregamento do arquivo de áudio
 let som = new Audio("sound/breaking-glass.mp3")
  
 // lanterna (pré carregamento)
@@ -131,4 +131,3 @@ async function desligar() {
         }
     }
 }
- 
